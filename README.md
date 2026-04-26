@@ -1,43 +1,24 @@
-# Sistem Fuzzy PHP (Konversi dari JavaScript)
+# Sistem Pakar Rekomendasi Strategi Belajar
 
-Proyek ini adalah versi PHP dari sistem sebelumnya (Node.js + React).
+Sistem pakar ini menggunakan metode **Forward Chaining** untuk memberikan rekomendasi strategi belajar berdasarkan gaya belajar dan kendala mahasiswa. Dibangun sepenuhnya menggunakan **PHP Native, HTML, CSS, dan MySQL** tanpa menggunakan framework apa pun.
 
-## Stack
+## Cara Menjalankan Proyek
 
-- PHP 8+
-- SQLite (PDO)
-- Tailwind (CDN)
-- Chart.js (CDN)
-- Routing sederhana via `.htaccess`
+1. **Persiapan Environtment**
+   - Pastikan Anda sudah menginstal **XAMPP** atau **Laragon**.
+   - Taruh folder `sistem-pakar-strategi-belajar` di dalam folder `htdocs` (jika menggunakan XAMPP) atau `www` (jika menggunakan Laragon).
 
-## Struktur
+2. **Pengaturan Database**
+   - Buka **phpMyAdmin** melalui browser (`http://localhost/phpmyadmin`).
+   - Impor file `database.sql` ke dalam server Anda (ini akan otomatis membuat database `db_sistem_pakar_belajar` dan tabel `consultations`).
 
-- [index.php](index.php): router utama untuk halaman web + API
-- [app/Services/FuzzyService.php](app/Services/FuzzyService.php): logika Fuzzy Mamdani
-- [app/Controllers/ApiController.php](app/Controllers/ApiController.php): controller endpoint API
-- [app/Repositories/AssessmentRepository.php](app/Repositories/AssessmentRepository.php): query SQLite
-- [views/pages](views/pages): halaman Home, Assessment, History, Detail
-- [database/database.sqlite](database/database.sqlite): database (dibuat otomatis)
+3. **Menjalankan Aplikasi**
+   - Buka browser Anda.
+   - Akses URL berikut: [http://localhost/sistem-pakar-strategi-belajar/](http://localhost/sistem-pakar-strategi-belajar/)
 
-## Endpoint API
+## Fitur Utama
 
-- GET [api](api)
-- POST [api/assessments](api/assessments)
-- GET [api/assessments](api/assessments)
-- GET [api/assessments/{id}](api/assessments/1)
-- DELETE [api/assessments/{id}](api/assessments/1)
-
-## Cara menjalankan di XAMPP
-
-1. Pastikan Apache aktif.
-2. Pastikan folder proyek ada di:
-   - `C:\xampp\htdocs\Sistem Fuzzy PHP`
-3. Buka di browser:
-   - `http://localhost/Sistem%20Fuzzy%20PHP/`
-
-Database SQLite akan dibuat otomatis saat request pertama.
-
-## Catatan
-
-- Rule fuzzy, membership function, inferensi MIN, agregasi MAX, dan defuzzifikasi centroid sudah dikonversi 1:1 dari versi JavaScript.
-- Halaman web sudah mencakup: Home, Penilaian, Riwayat, dan Detail.
+- **Konsultasi**: Pengisian gejala/kendala yang dialami.
+- **Inferensi**: Pemrosesan berbasis 18 Rules Forward Chaining.
+- **Hasil & Evaluasi**: Analisa gaya belajar visual, auditori, kinestetik, dan masalah spesifik beserta rekomendasi strategi.
+- **Riwayat Konsultasi**: Tersimpan di database, dan dilengkapi dengan fitur detail tiap entri, serta penghapusan riwayat.
